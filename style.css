@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+body {
+    font-family: 'Rubik', sans-serif;
+    margin: 0;
+}
+
+table {
+    width: 100vw;
+    height: 70vh;
+    background-color: #202a49;
+    color: rgb(235, 235, 235);
+}
+
+td {
+    width: 25%;
+    background-color: #2a3761;
+    text-align: center;
+    font-size: 2rem;
+}
+
+
+td:hover {
+    background-color: rgb(59, 77, 138);
+    cursor: pointer;
+}
+
+#result-area {
+    color: rgb(235, 235, 235);
+    font-size: 5rem;
+    display: block;
+    text-align: right;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-sizing: border-box;
+    height: 30vh;
+    background-color: #5b6585;
+    
+}
+
+#equal-button {
+    background-color: rgb(43, 37, 94);
+}
+
+#equal-button:hover {
+    background-color: rgb(153, 44, 153);
+}
+
+#delete-button {
+    background-color: rgb(196, 69, 69);
+}
+
+#delete-button:hover {
+    background-color: rgb(238, 26, 26);
+}
+
+#clear-button {
+    background-color: rgb(194, 27, 27);
+}
+
+#clear-button:hover {
+    background-color: rgb(255, 0, 0);
+}
+
+
+.highlight {
+    background-color: #35457a;
+}
+

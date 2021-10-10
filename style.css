@@ -38,32 +38,36 @@ td:hover {
     
 }
 
-#equal-button {
+.equal {
     background-color: rgb(43, 37, 94);
 }
 
-#equal-button:hover {
+.equal:hover {
     background-color: rgb(153, 44, 153);
 }
 
-#delete-button {
+.delete {
     background-color: rgb(196, 69, 69);
 }
 
-#delete-button:hover {
+.delete:hover {
     background-color: rgb(238, 26, 26);
 }
 
-#clear-button {
+.clear {
     background-color: rgb(194, 27, 27);
 }
 
-#clear-button:hover {
+.clear:hover {
     background-color: rgb(255, 0, 0);
 }
 
 
 .highlight {
     background-color: #35457a;
+}
+
+.pressed {
+    background-color: rgb(192, 24, 192);
 }
 

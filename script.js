@@ -19,108 +19,118 @@ function deleteLastInput() {
     }
 }
 
+//appends element into the calculator window
+function appendButtonElement(value) {
+    appendElement(value);
+}
 
-function zeroButton() {
-    appendElement(0);
-  }
-  
-  function oneButton() {
-    appendElement(1);
-  }
-  
-  function twoButton() {
-    appendElement(2);
-  }
-  
-  function threeButton() {
-    appendElement(3);
-  }
-  
-  function fourButton() {
-    appendElement(4);
-  }
-  
-  function fiveButton() {
-    appendElement(5);
-  }
-  
-  function sixButton() {
-    appendElement(6);
-  }
-  
-  function sevenButton() {
-    appendElement(7);
-  }
-  
-  function eightButton() {
-    appendElement(8);
-  }
-  
-  function nineButton() {
-    appendElement(9);
-  }
-
-  function plusButton() {
-      appendElement("+");
-  }
-
-  function minusButton() {
-      appendElement("-");
-  }
-
-  function multiplyButton() {
-      appendElement("*");
-  }
-
-  function divideButton() {
-      appendElement("/");
-  }
-
-  function commaButton() {
-      appendElement(".");
-  }
-
-
-
+//appends element into calculator window if corresponding key is presses
+//toggles highlight of pressed key
 window.onkeydown = function(event) {
     if (event.keyCode == 96 || event.keyCode == 48) {
-       zeroButton();
+       appendButtonElement(0);
+       toggleKeyColor("zero-button");
     } else if (event.keyCode == 97 || event.keyCode == 49) {
-        oneButton();
+        appendButtonElement(1);
+        toggleKeyColor("one-button");
     } else if (event.keyCode == 98 || event.keyCode == 50) {
-        twoButton();
+        appendButtonElement(2);
+        toggleKeyColor("two-button");
     } else if (event.keyCode == 99 || event.keyCode == 51) {
-        threeButton();
+        appendButtonElement(3);
+        toggleKeyColor("three-button");
     } else if (event.keyCode == 100 || event.keyCode == 52) {
-        fourButton();
+        appendButtonElement(4);
+        toggleKeyColor("four-button");
     } else if (event.keyCode == 101 || event.keyCode == 53) {
-        fiveButton();
+        appendButtonElement(5);
+        toggleKeyColor("five-button");
     } else if (event.keyCode == 102 || event.keyCode == 54) {
-        sixButton();
+        appendButtonElement(6);
+        toggleKeyColor("six-button");
     } else if (event.keyCode == 103 || event.keyCode == 55) {
-        sevenButton();
+        appendButtonElement(7);
+        toggleKeyColor("seven-button");
     } else if (event.keyCode == 104 || event.keyCode == 56) {
-       eightButton();
+        appendButtonElement(8);
+        toggleKeyColor("eight-button");
     } else if (event.keyCode == 105 || event.keyCode == 57) {
-        nineButton();
+        appendButtonElement(9);
+        toggleKeyColor("nine-button");
     } else if (event.keyCode == 107) {
-        plusButton();
+        appendButtonElement("+");
+        toggleKeyColor("plus-button");
     } else if (event.keyCode == 109) {
-        minusButton();
+        appendButtonElement("-");
+        toggleKeyColor("minus-button");
     } else if (event.keyCode == 106) {
-        multiplyButton();
+        appendButtonElement("*");
+        toggleKeyColor("multiply-button");
     } else if (event.keyCode == 111) {
-        divideButton();
-    } else if (event.keyCode == 110) {
-        commaButton();
+        appendButtonElement("/");
+        toggleKeyColor("divide-button");
+    } else if (event.keyCode == 108 || event.keyCode == 188) {
+        appendButtonElement('.');
+        toggleKeyColor("decimal-button");
     } else if (event.keyCode == 13) {
         calculateResult();
+        toggleKeyColor("equal-button");
     } else if (event.keyCode == 8) {
         deleteLastInput();
+        toggleKeyColor("delete-button");
     } else if (event.keyCode == 67) {
         clearInput();
+        toggleKeyColor("clear-button");
     }}
 
-    function toggleKeyColor(button) {
-        
+    //releases the key highlight toggles
+    window.onkeyup = function(event) {
+        if (event.keyCode == 96 || event.keyCode == 48) {
+           revertKeyColor("zero-button");
+        } else if (event.keyCode == 97 || event.keyCode == 49) {
+            revertKeyColor("one-button");
+        } else if (event.keyCode == 98 || event.keyCode == 50) {
+            revertKeyColor("two-button");
+        } else if (event.keyCode == 99 || event.keyCode == 51) {
+            revertKeyColor("three-button");
+        } else if (event.keyCode == 100 || event.keyCode == 52) {
+            revertKeyColor("four-button");
+        } else if (event.keyCode == 101 || event.keyCode == 53) {
+            revertKeyColor("five-button");
+        } else if (event.keyCode == 102 || event.keyCode == 54) {
+            revertKeyColor("six-button");
+        } else if (event.keyCode == 103 || event.keyCode == 55) {
+            revertKeyColor("seven-button");
+        } else if (event.keyCode == 104 || event.keyCode == 56) {
+            revertKeyColor("eight-button");
+        } else if (event.keyCode == 105 || event.keyCode == 57) {
+            revertKeyColor("nine-button");
+        } else if (event.keyCode == 107) {
+            revertKeyColor("plus-button");
+        } else if (event.keyCode == 109) {
+            revertKeyColor("minus-button");
+        } else if (event.keyCode == 106) {
+            revertKeyColor("multiply-button");
+        } else if (event.keyCode == 111) {
+            revertKeyColor("divide-button");
+        } else if (event.keyCode == 108 || event.keyCode == 188) {
+            revertKeyColor("decimal-button");
+        } else if (event.keyCode == 13) {
+            revertKeyColor("equal-button");
+        } else if (event.keyCode == 8) {
+            revertKeyColor("delete-button");
+        } else if (event.keyCode == 67) {
+            revertKeyColor("clear-button");
+        }}
+
+    //adds class to element in order to change color
+    //element ID is parsed as an argument into the function
+    function toggleKeyColor(buttonID) {
+        let buttonClass = document.getElementById(buttonID);
+        buttonClass.classList.add("pressed");
+    }
+    //removes class in order to revert element color
+    function revertKeyColor(buttonID) {
+        let buttonClass = document.getElementById(buttonID);
+        buttonClass.classList.remove("pressed");
     }

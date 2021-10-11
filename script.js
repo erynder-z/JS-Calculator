@@ -5,10 +5,10 @@ let result;
 let num1 = "";
 let num2 = "";
 let operand = "";
-
+let calcArray = [];
 
 function appendElement(element) {
-    inputArea.innerHTML+=element;
+    inputArea.textContent+=element;
     checkOperand(element);
 }
 
@@ -40,45 +40,52 @@ function divide(num1, num2) {
 }
 
 function operate() {
-  let testString = inputArea.textContent;
-  console.log(testString);
-  const calcArray = testString.split(/[\*+-/]/); //splits between any of these: + - * /
-  console.log(calcArray);
+  let inputAreaString = inputArea.textContent;
+
+  // const calcArray = inputAreaString.split(/[\*+-/]/); //splits between any of these: + - * /
+  // it's shorter than the code below but work with floating point numbers
+  if (operand == "+") {
+     calcArray = inputAreaString.split("+");
+  } else if ( operand == "-") {
+     calcArray = inputAreaString.split("-");
+  } else if (operand == "*") {
+     calcArray = inputAreaString.split("*");
+  } else if (operand == "/") {
+     calcArray = inputAreaString.split("/");
+  } else {
+      alert("something went wrong!");
+  }
+  
   num1 = calcArray[0];
   num2 = calcArray[1];
+
     if (operand == "+") {
         add(num1, num2);
-        inputArea.innerHTML = result;
+        inputArea.textContent = result;
     } else if (operand == "-") {
         subtract(num1, num2);
-        inputArea.innerHTML = result;
+        inputArea.textContent = result;
     } else if (operand == "*") {
         multiply(num1, num2);
-        inputArea.innerHTML = result;
+        inputArea.textContent = result;
     } else if (operand == "/") {
         divide(num1, num2);
-        inputArea.innerHTML = result;
+        inputArea.textContent = result;
     } else {
         alert("something went wrong!")
     }
 }
 
-function getNum1() {
-    if (operand == ' + ' || operand == ' - ' || operand == ' * ' || operand == ' / ') {
-        num1 = inputArea.innerHTML;
-    }
-}
-
 function clearInput() {
-inputArea.innerHTML = "";
-workingArea.innerHTML = "";
+inputArea.textContent = "";
+workingArea.textContent = "";
 }
 
 function deleteLastInput() {
-    if (inputArea.innerHTML.endsWith(" ")) {
-        inputArea.innerHTML = inputArea.innerHTML.slice(0,-3);
+    if (inputArea.textContent.endsWith(" ")) {
+        inputArea.textContent = inputArea.textContent.slice(0,-3);
     } else { 
-        inputArea.innerHTML = inputArea.innerHTML.slice(0,-1);
+        inputArea.textContent = inputArea.textContent.slice(0,-1);
     }
 }
 

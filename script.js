@@ -1,79 +1,138 @@
+
+const inputArea = document.getElementById("input-area");
+const workingArea = document.getElementById("working-area");
+let result;
+let num1 = "";
+let num2 = "";
+let operand = "";
+
+
 function appendElement(element) {
-    document.getElementById("result-area").innerHTML+=element;
+    inputArea.innerHTML+=element;
+    checkOperand(element);
 }
 
-function calculateResult() {
+function checkOperand(element) {
+    if ( element == "+" || element == "-" || element == "*" || element == "/") {
+        operand = element;
+        return operand;
+}
 }
 
-function clearInput() {
-    let container = document.getElementById("result-area");
-    container.innerHTML = "";
+function add(num1, num2) {
+    result = parseFloat(num1) + parseFloat(num2);
+    return result;
 }
 
-function deleteLastInput() {
-    let container = document.getElementById("result-area");
-    if (container.innerHTML.endsWith(" ")) {
-        container.innerHTML = container.innerHTML.slice(0,-3);
-    } else { 
-        container.innerHTML = container.innerHTML.slice(0,-1);
+function subtract(num1, num2) {
+    result = parseFloat(num1) - parseFloat(num2);
+    return result;
+}
+
+function multiply(num1, num2) {
+    result = parseFloat(num1) * parseFloat(num2);
+    return result;
+}
+
+function divide(num1, num2) {
+    result = parseFloat(num1) / parseFloat(num2);
+    return result;
+}
+
+function operate() {
+  let testString = inputArea.textContent;
+  console.log(testString);
+  const calcArray = testString.split(/[\*+-/]/); //splits between any of these: + - * /
+  console.log(calcArray);
+  num1 = calcArray[0];
+  num2 = calcArray[1];
+    if (operand == "+") {
+        add(num1, num2);
+        inputArea.innerHTML = result;
+    } else if (operand == "-") {
+        subtract(num1, num2);
+        inputArea.innerHTML = result;
+    } else if (operand == "*") {
+        multiply(num1, num2);
+        inputArea.innerHTML = result;
+    } else if (operand == "/") {
+        divide(num1, num2);
+        inputArea.innerHTML = result;
+    } else {
+        alert("something went wrong!")
     }
 }
 
-//appends element into the calculator window
-function appendButtonElement(value) {
-    appendElement(value);
+function getNum1() {
+    if (operand == ' + ' || operand == ' - ' || operand == ' * ' || operand == ' / ') {
+        num1 = inputArea.innerHTML;
+    }
 }
+
+function clearInput() {
+inputArea.innerHTML = "";
+workingArea.innerHTML = "";
+}
+
+function deleteLastInput() {
+    if (inputArea.innerHTML.endsWith(" ")) {
+        inputArea.innerHTML = inputArea.innerHTML.slice(0,-3);
+    } else { 
+        inputArea.innerHTML = inputArea.innerHTML.slice(0,-1);
+    }
+}
+
 
 //appends element into calculator window if corresponding key is presses
 //toggles highlight of pressed key
 window.onkeydown = function(event) {
     if (event.keyCode == 96 || event.keyCode == 48) {
-       appendButtonElement(0);
+       appendElement(0);
        toggleKeyColor("zero-button");
     } else if (event.keyCode == 97 || event.keyCode == 49) {
-        appendButtonElement(1);
+        appendElement(1);
         toggleKeyColor("one-button");
     } else if (event.keyCode == 98 || event.keyCode == 50) {
-        appendButtonElement(2);
+        appendElement(2);
         toggleKeyColor("two-button");
     } else if (event.keyCode == 99 || event.keyCode == 51) {
-        appendButtonElement(3);
+        appendElement(3);
         toggleKeyColor("three-button");
     } else if (event.keyCode == 100 || event.keyCode == 52) {
-        appendButtonElement(4);
+        appendElement(4);
         toggleKeyColor("four-button");
     } else if (event.keyCode == 101 || event.keyCode == 53) {
-        appendButtonElement(5);
+        appendElement(5);
         toggleKeyColor("five-button");
     } else if (event.keyCode == 102 || event.keyCode == 54) {
-        appendButtonElement(6);
+        appendElement(6);
         toggleKeyColor("six-button");
     } else if (event.keyCode == 103 || event.keyCode == 55) {
-        appendButtonElement(7);
+        appendElement(7);
         toggleKeyColor("seven-button");
     } else if (event.keyCode == 104 || event.keyCode == 56) {
-        appendButtonElement(8);
+        appendElement(8);
         toggleKeyColor("eight-button");
     } else if (event.keyCode == 105 || event.keyCode == 57) {
-        appendButtonElement(9);
+        appendElement(9);
         toggleKeyColor("nine-button");
     } else if (event.keyCode == 107) {
-        appendButtonElement("+");
+        appendElement("+");
         toggleKeyColor("plus-button");
     } else if (event.keyCode == 109) {
-        appendButtonElement("-");
+        appendElement("-");
         toggleKeyColor("minus-button");
     } else if (event.keyCode == 106) {
-        appendButtonElement("*");
+        appendElement("*");
         toggleKeyColor("multiply-button");
     } else if (event.keyCode == 111) {
-        appendButtonElement("/");
+        appendElement("/");
         toggleKeyColor("divide-button");
     } else if (event.keyCode == 108 || event.keyCode == 188) {
-        appendButtonElement('.');
+        appendElement('.');
         toggleKeyColor("decimal-button");
     } else if (event.keyCode == 13) {
-        calculateResult();
+        operate();
         toggleKeyColor("equal-button");
     } else if (event.keyCode == 8) {
         deleteLastInput();

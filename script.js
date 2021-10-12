@@ -2,8 +2,8 @@
 const inputArea = document.getElementById("input-area");
 const workingArea = document.getElementById("working-area");
 let result;
-let num1 = null;
-let num2 = null;
+let num1;
+let num2;
 let operand = null;
 let calcArray = [];
 let inputAreaString;
@@ -13,14 +13,14 @@ let operandCounter = 0;
 function appendElement(element) {
     inputArea.textContent+=element;
     checkOperand(element);
-    checkInput();
 }
 
 //gets the operand to determine what caluclation function is going to be used
 function checkOperand(element) {
-    if ( element == "+" || element == "-" || element == "*" || element == "/") {
+    if ( element == " + " || element == " - " || element == " * " || element == " / ") {
         operand = element;
         operandCounter++ 
+        checkInput();
         return operand;
 }
 }
@@ -28,78 +28,64 @@ function checkOperand(element) {
 //helper function to limit input
 function checkInput() {
     if (operandCounter > 1) {
-        deleteLastInput();
+        substituteOperand();
+        //deleteLastInput();
     } 
 }
 
 //calculator functions
-function add(num1, num2) {
-    result = parseFloat(num1) + parseFloat(num2);
+function add(a, b) {
+    result = parseFloat(a) + parseFloat(b);
     return result;
 }
-function subtract(num1, num2) {
-    result = parseFloat(num1) - parseFloat(num2);
+function subtract(a, b) {
+    result = parseFloat(a) - parseFloat(b);
     return result;
 }
-function multiply(num1, num2) {
-    result = parseFloat(num1) * parseFloat(num2);
+function multiply(a, b) {
+    result = parseFloat(a) * parseFloat(b);
     return result;
 }
-function divide(num1, num2) {
-    result = parseFloat(num1) / parseFloat(num2);
+function divide(a, b) {
+    result = parseFloat(a) / parseFloat(b);
     return result;
 }
 
 //evaluates input field
 function operate() {
     inputAreaString = inputArea.textContent;
+    const calcArray = inputAreaString.split(" ");
+    num1 = calcArray[0];
+    num2 = calcArray[2];
 
-  // const calcArray = inputAreaString.split(/[\*+-/]/); //splits between any of these: + - * /
-  // it's shorter than the code below but doesn't work with floating point numbers
-  if (operand == "+") {
-     calcArray = inputAreaString.split("+");
-  } else if ( operand == "-") {
-     calcArray = inputAreaString.split("-");
-  } else if (operand == "*") {
-     calcArray = inputAreaString.split("*");
-  } else if (operand == "/") {
-     calcArray = inputAreaString.split("/");
-  } else {
-      alert("something went wrong!");
-  }
-
-  num1 = calcArray[0];
-  num2 = calcArray[1];
-
-    if (operand == "+") {
+    if (operand == " + ") {
         add(num1, num2);
         inputArea.textContent = result;
         workingArea.textContent = inputAreaString;
         num1 = result;
-        operand = null;
-    } else if (operand == "-") {
+    } else if (operand == " - ") {
         subtract(num1, num2);
         inputArea.textContent = result;
         workingArea.textContent = inputAreaString;
         num1 = result;
-        operand = null;
-    } else if (operand == "*") {
+    } else if (operand == " * ") {
         multiply(num1, num2);
         inputArea.textContent = result;
         workingArea.textContent = inputAreaString;
-        num1 = result;
-        operand = null;
-    } else if (operand == "/") {
+        num1 = result;  
+    } else if (operand == " / ") {
         divide(num1, num2);
         inputArea.textContent = result;
         workingArea.textContent = inputAreaString;
         num1 = result;
-        operand = null;
     } else {
-        alert("something went wrong!")
+        alert("something went wrong in the oeprate function lower!")
     }
 
-    operandCounter = "0";
+    operandCounter = 0;
+    console.log(operand);
+    console.log(inputAreaString);
+    console.log(calcArray);
 }
 
 //function for clr-button
@@ -117,8 +103,14 @@ function deleteLastInput() {
     }
 }
 
+//prevent user from inputting multiple operands by slicing the previous one and substitute it with the current one
+function substituteOperand() {
+    updateString = inputArea.textContent.slice(0,-6);
+    inputArea.textContent = updateString + operand;
+}
 
-//appends element into calculator window if corresponding key is presses
+//functionality for keyboard input
+//appends element into calculator window if corresponding key is pressed
 //toggles highlight of pressed key
 window.onkeydown = function(event) {
     if (event.keyCode == 96 || event.keyCode == 48) {
@@ -152,16 +144,16 @@ window.onkeydown = function(event) {
         appendElement(9);
         toggleKeyColor("nine-button");
     } else if (event.keyCode == 107) {
-        appendElement("+");
+        appendElement(" + ");
         toggleKeyColor("plus-button");
     } else if (event.keyCode == 109) {
-        appendElement("-");
+        appendElement(" - ");
         toggleKeyColor("minus-button");
     } else if (event.keyCode == 106) {
-        appendElement("*");
+        appendElement(" * ");
         toggleKeyColor("multiply-button");
     } else if (event.keyCode == 111) {
-        appendElement("/");
+        appendElement(" / ");
         toggleKeyColor("divide-button");
     } else if (event.keyCode == 108 || event.keyCode == 188) {
         appendElement('.');
@@ -217,14 +209,14 @@ window.onkeyup = function(event) {
          revertKeyColor("clear-button");
         }}
 
-//adds class to element in order to change color
+//adds class to element in order to change its color
 //element ID is parsed as an argument into the function
 function toggleKeyColor(buttonID) {
         let buttonClass = document.getElementById(buttonID);
         buttonClass.classList.add("pressed");
     }
 
-//removes class in order to revert element color
+//removes class in order to revert elements color
 function revertKeyColor(buttonID) {
         let buttonClass = document.getElementById(buttonID);
         buttonClass.classList.remove("pressed");

@@ -7,30 +7,45 @@ let num2;
 let operand = null;
 let calcArray = [];
 let inputAreaString;
-let operandCounter = 0;
+let operandCounter = 0; //helper to prevent input of multiple operands
+let negativeCounter = 0; //helper to prevent input of ultiple negative prefixes
 
+
+//checks if first input element is an operand and, if so, removes it
 //adds elements to the input field
 function appendElement(element) {
+    if (inputArea.textContent == "") {
+        if (element == " + " || element == " - " || element == " * " || element == " / ") {
+            element = "";
+        }
+    }
     inputArea.textContent+=element;
     checkOperand(element);
 }
 
 //gets the operand to determine what caluclation function is going to be used
 function checkOperand(element) {
-    if ( element == " + " || element == " - " || element == " * " || element == " / ") {
+    if (element == " + " || element == " - " || element == " * " || element == " / ") {
         operand = element;
         operandCounter++ 
         checkInput();
         return operand;
 }
+    if (element == "-") {
+        negativeCounter++
+        checkInput();
+    }
 }
 
 //helper function to limit input
 function checkInput() {
     if (operandCounter > 1) {
         substituteOperand();
-        //deleteLastInput();
     } 
+    if (negativeCounter > 1) {
+        deleteLastInput();
+        negativeCounter--;
+    }
 }
 
 //calculator functions
@@ -83,9 +98,7 @@ function operate() {
     }
 
     operandCounter = 0;
-    console.log(operand);
-    console.log(inputAreaString);
-    console.log(calcArray);
+    negativeCounter = 0;
 }
 
 //function for clr-button
@@ -167,6 +180,9 @@ window.onkeydown = function(event) {
     } else if (event.keyCode == 67) {
         clearInput();
         toggleKeyColor("clear-button");
+    } else if (event.keyCode == 173) {
+        appendElement('-');
+        toggleKeyColor("negative-button");
     }}
 
  //releases the key highlight toggles
@@ -207,7 +223,9 @@ window.onkeyup = function(event) {
         revertKeyColor("delete-button");
     } else if (event.keyCode == 67) {
          revertKeyColor("clear-button");
-        }}
+    } else if (event.keyCode == 173) {
+        revertKeyColor("negative-button");
+    }}
 
 //adds class to element in order to change its color
 //element ID is parsed as an argument into the function

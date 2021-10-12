@@ -8,14 +8,15 @@ let operand = null;
 let calcArray = [];
 let inputAreaString;
 let operandCounter = 0; //helper to prevent input of multiple operands
-let negativeCounter = 0; //helper to prevent input of ultiple negative prefixes
+let negativeCounter = 0; //helper to prevent input of multiple negative prefixes
+let commaCounter = 0; //helper to prevent input of multiple commas
 
 
-//checks if first input element is an operand and, if so, removes it
+//checks if first input element is an operand/comma and, if so, removes it
 //adds elements to the input field
 function appendElement(element) {
     if (inputArea.textContent == "") {
-        if (element == " + " || element == " - " || element == " * " || element == " / ") {
+        if (element == " + " || element == " - " || element == " * " || element == " / " || element == ".") {
             element = "";
         }
     }
@@ -24,10 +25,12 @@ function appendElement(element) {
 }
 
 //gets the operand to determine what caluclation function is going to be used
+//adjusts counters
 function checkOperand(element) {
     if (element == " + " || element == " - " || element == " * " || element == " / ") {
         operand = element;
         operandCounter++ 
+        commaCounter = 0;
         checkInput();
         return operand;
 }
@@ -35,9 +38,14 @@ function checkOperand(element) {
         negativeCounter++
         checkInput();
     }
+    if (element == ".") {
+        commaCounter++
+        checkInput();
+    }
 }
 
 //helper function to limit input
+//adjusts counters
 function checkInput() {
     if (operandCounter > 1) {
         substituteOperand();
@@ -45,6 +53,10 @@ function checkInput() {
     if (negativeCounter > 1) {
         deleteLastInput();
         negativeCounter--;
+    }
+    if (commaCounter > 1) {
+        deleteLastInput();
+        commaCounter--;
     }
 }
 
@@ -94,11 +106,12 @@ function operate() {
         workingArea.textContent = inputAreaString;
         num1 = result;
     } else {
-        alert("something went wrong in the oeprate function lower!")
+        alert("something went wrong in the operate function!")
     }
 
     operandCounter = 0;
     negativeCounter = 0;
+    commaCounter = 0;
 }
 
 //function for clr-button

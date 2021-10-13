@@ -4,48 +4,36 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JS CALC</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
-    <link rel="manifest" href="manifest.json">
+    <title>JS Calculator</title>
+    <link href="style.css" rel="stylesheet">
+    <script href="script.js" defer></script>
 </head>
 <body>
-    <div id="results-wrapper">
-    <div id="working-area"></div>
-    <div id="input-area"></div>
+    <div class="calculator-grid">
+        <div class="output">
+            <div class="previous-operand"></div>
+            <div class="current-operand"></div>
+        </div>
+        <button>A</button>
+        <button>B</button>
+        <button id="clear">CLR</button>
+        <button id="delete">DEL</button>
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button id="dividebtn">÷</button>
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button id="multiplybtn">x</button>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button id="minusbtn">-</button>
+        <button>0</button>
+        <button>,</button>
+        <button id="equal">=</button>
+        <button id="plusbtn">+</button>
     </div>
-        <table>
-            <tr>
-                <td id="negative-button" onclick="appendElement('-')">+/-</td>
-                <td id="b-button" onclick="someFunction()">B</td>
-                <td id="clear-button" class="clear" onclick="clearInput()">CLR</td>
-                <td id="delete-button" class="delete" onclick="deleteLastInput()">DEL</td>
-            </tr>
-            <tr>
-                <td id="seven-button" onclick="appendElement(7)">7</td>
-                <td id="eight-button" onclick="appendElement(8)">8</td>
-                <td id="nine-button" onclick="appendElement(9)">9</td>
-                <td id="divide-button" class="highlight" onclick="appendElement(' / ')">/</td>
-            </tr>
-            <tr>
-                <td id="four-button" onclick="appendElement(4)">4</td>
-                <td id="five-button" onclick="appendElement(5)">5</td>
-                <td id="six-button" onclick="appendElement(6)">6</td>
-                <td id="multiply-button" class="highlight" onclick="appendElement(' * ')">x</td>
-            </tr>
-            <tr>
-                <td id="one-button" onclick="appendElement(1)">1</td>
-                <td id="two-button" onclick="appendElement(2)">2</td>
-                <td id="three-button" onclick="appendElement(3)">3</td>
-                <td id="minus-button" class="highlight" onclick="appendElement(' - ')">-</td>
-            </tr>
-            <tr>
-                <td id="zero-button" onclick="appendElement(0)">0</td>
-                <td id="decimal-button" onclick="appendElement('.')">,</td>
-                <td id="equal-button" class="equal" onclick="operate()">=</td>
-                <td id="plus-button" class="highlight" onclick="appendElement(' + ')">+</td>
-            </tr>
-
-        </table>
 </body>
 </html>

@@ -6,34 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JS Calculator</title>
     <link href="style.css" rel="stylesheet">
-    <script href="script.js" defer></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
     <div class="calculator-grid">
         <div class="output">
-            <div class="previous-operand"></div>
-            <div class="current-operand"></div>
+            <div data-previous-operand class="previous-operand"></div>
+            <div data-current-operand class="current-operand"></div>
         </div>
-        <button>A</button>
-        <button>B</button>
-        <button id="clear">CLR</button>
-        <button id="delete">DEL</button>
-        <button>7</button>
-        <button>8</button>
-        <button>9</button>
-        <button id="dividebtn">÷</button>
-        <button>4</button>
-        <button>5</button>
-        <button>6</button>
-        <button id="multiplybtn">x</button>
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
-        <button id="minusbtn">-</button>
-        <button>0</button>
-        <button>,</button>
-        <button id="equal">=</button>
-        <button id="plusbtn">+</button>
+        <button data-a>A</button>
+        <button data-b>B</button>
+        <button data-clear id="clear">CLR</button>
+        <button data-delete id="delete">DEL</button>
+        <button data-number>7</button>
+        <button data-number>8</button>
+        <button data-number>9</button>
+        <button data-operation id="dividebtn">÷</button>
+        <button data-number>4</button>
+        <button data-number>5</button>
+        <button data-number>6</button>
+        <button data-operation id="multiplybtn">x</button>
+        <button data-number>1</button>
+        <button data-number>2</button>
+        <button data-number>3</button>
+        <button data-operation id="minusbtn">-</button>
+        <button data-number>0</button>
+        <button data-number>,</button>
+        <button data-equal id="equal">=</button>
+        <button data-operation id="plusbtn">+</button>
     </div>
 </body>
 </html>

@@ -52,7 +52,13 @@ class Calculator {
        } else if (this.operation == "x") {
            result = num1 * num2;
        } else if (this.operation == "÷") {
+           if (num2 == 0) {
+               alert("divide by zero?");
+               myCalculator.clear();
+               return;
+           } else {
            result = num1 / num2;
+        }
        } else {
            return;
        }

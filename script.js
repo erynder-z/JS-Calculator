@@ -22,7 +22,7 @@ class Calculator {
      }
 
      delete() {
-
+        this.currentOperand = this.currentOperand.toString().slice(0,-1);
      }
 
      appendElement(number) {
@@ -73,14 +73,19 @@ numberButtons.forEach(button => {
     button.addEventListener("click", () => {
         myCalculator.appendElement(button.innerText);
         myCalculator.updateDisplay();
-    })
+    });
 });
 
 operationButtons.forEach(button => {
     button.addEventListener("click", () => {
         myCalculator.chooseOperantion(button.innerText);
         myCalculator.updateDisplay();
-    })
+    });
+});
+
+equalButton.addEventListener("click", () => {
+    myCalculator.operate();
+    myCalculator.updateDisplay();
 })
 
 clearButton.addEventListener("click", () => {
@@ -88,7 +93,8 @@ clearButton.addEventListener("click", () => {
     myCalculator.updateDisplay();
 });
 
-equalButton.addEventListener("click", () => {
-    myCalculator.operate();
+deleteButton.addEventListener("click", () => {
+    myCalculator.delete();
     myCalculator.updateDisplay();
-})
+});
+

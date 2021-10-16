@@ -26,21 +26,45 @@ class Calculator {
      }
 
      appendElement(number) {
-         if (number === "," && this.currentOperand.includes(",")) return; 
-         this.currentOperand = this.currentOperand.toString() + number.toString();
-     }
+        if (number === "," && this.currentOperand.includes(",")) return; 
+        this.currentOperand = this.currentOperand.toString() + number.toString();
+    }
 
-     chooseOperantion(operation) {
+    chooseOperantion(operation) {
+        if (this.currentOperand === "") return;
+        if (this.currentOperand !== "") {
+            this.operate();
+        }
+       this.operation = operation;
+       this.previousOperand = this.currentOperand;
+       this.currentOperand = "";
+    }
 
-     }
+    operate() {
+       let result;
+       const num1 = parseFloat(this.previousOperand);
+       const num2 = parseFloat(this.currentOperand);
+       if ( isNaN(num1) || isNaN(num2) ) return;
+       if (this.operation == "+") {
+           result = num1 + num2;
+       } else if(this.operation == "-") {
+           result = num1 - num2;
+       } else if (this.operation == "x") {
+           result = num1 * num2;
+       } else if (this.operation == "÷") {
+           result = num1 / num2;
+       } else {
+           return;
+       }
+       this.currentOperand = result;
+       this.operation = undefined;
+       this.previousOperand = "";
+    }
 
-     operate() {
-
-     }
-
-     updateDisplay() {
-        this.currentOperandTextElement.innerText = this.currentOperand;d;
-     }
+    updateDisplay() {
+       this.currentOperandTextElement.innerText = this.currentOperand;
+       this.previousOperandTextElement.innerText = this.previousOperand;
+    }
 }
 
 const myCalculator = new Calculator(previousOperandTextElement,   currentOperandTextElement)
@@ -63,3 +87,8 @@ clearButton.addEventListener("click", () => {
     myCalculator.clear();
     myCalculator.updateDisplay();
 });
+
+equalButton.addEventListener("click", () => {
+    myCalculator.operate();
+    myCalculator.updateDisplay();
+})

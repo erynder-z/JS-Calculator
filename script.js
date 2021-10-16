@@ -18,7 +18,7 @@ class Calculator {
      clear() {
          this.currentOperand = "";
          this.previousOperand = "";
-         this.operation  = undefined;
+         this.operation  = "";
      }
 
      delete() {
@@ -26,7 +26,7 @@ class Calculator {
      }
 
      appendElement(number) {
-        if (number === "," && this.currentOperand.includes(",")) return; 
+        if (number === "." && this.currentOperand.includes(".")) return; 
         this.currentOperand = this.currentOperand.toString() + number.toString();
     }
 
@@ -57,13 +57,17 @@ class Calculator {
            return;
        }
        this.currentOperand = result;
-       this.operation = undefined;
+       this.operation = "";
        this.previousOperand = "";
     }
 
     updateDisplay() {
        this.currentOperandTextElement.innerText = this.currentOperand;
-       this.previousOperandTextElement.innerText = this.previousOperand;
+       if (this.operation != "") {
+       this.previousOperandTextElement.innerText = `${this.previousOperand} ${this.operation}`;
+    } else {
+        previousOperandTextElement.innerText = this.previousOperand;
+    }
     }
 }
 

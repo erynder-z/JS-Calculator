@@ -58,40 +58,44 @@ body {
     color: rgb(235, 235, 235);
 }
 
-#equal {
+#equal-button {
     background-color: rgb(43, 37, 94);
 }
 
-#equal:hover {
+#equal-button:hover {
     background-color: rgb(153, 44, 153);
 }
 
-#delete {
+#delete-button {
     background-color: rgb(196, 69, 69);
 }
 
-#delete:hover {
+#delete-button:hover {
     background-color: rgb(238, 26, 26);
 }
 
-#clear {
+#clear-button {
     background-color: rgb(194, 27, 27);
 }
 
-#clear:hover {
+#clear-button:hover {
     background-color: rgb(255, 0, 0);
 }
 
-#plusbtn,
-#minusbtn,
-#multiplybtn,
-#dividebtn {
+#plus-button,
+#minus-button,
+#multiply-button,
+#divide-button {
     background-color: #35457a;
 }
 
-#plusbtn:hover,
-#minusbtn:hover,
-#multiplybtn:hover,
-#dividebtn:hover {
+#plus-button:hover,
+#minus-button:hover,
+#multiply-button:hover,
+#divide-button:hover {
     background-color: #9163cc;
+}
+
+.pressed {
+    background-color: rgb(192, 24, 192)!important;
 }

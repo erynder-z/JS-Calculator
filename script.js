@@ -126,6 +126,18 @@ class Calculator {
             previousOperandTextElement.innerText = this.previousOperand;
         }
     }
+
+    //adds class to element in order to change its color
+    //element ID is parsed as an argument into the function
+    toggleKeyColor(buttonID) {
+        let buttonClass = document.getElementById(buttonID);
+        buttonClass.classList.add("pressed");
+    }
+    //removes class in order to revert elements color
+    revertKeyColor(buttonID) {
+        let buttonClass = document.getElementById(buttonID);
+        buttonClass.classList.remove("pressed");
+    }
 }
 
 //the calculator object we use to call the functions on
@@ -172,64 +184,144 @@ deleteButton.addEventListener("click", () => {
 });
 
 //keyboard input functionality
-window.onkeydown = function(event) {
+window.onkeydown = function (event) {
     if (event.keyCode == 96 || event.keyCode == 48) {
+        myCalculator.toggleKeyColor("zero-button");
         myCalculator.appendElement(0);
         myCalculator.updateDisplay();
-     } else if (event.keyCode == 97 || event.keyCode == 49) {
+    } else if (event.keyCode == 97 || event.keyCode == 49) {
+        myCalculator.toggleKeyColor("one-button");
         myCalculator.appendElement(1);
         myCalculator.updateDisplay();
-     } else if (event.keyCode == 98 || event.keyCode == 50) {
+    } else if (event.keyCode == 98 || event.keyCode == 50) {
+        myCalculator.toggleKeyColor("two-button");
         myCalculator.appendElement(2);
         myCalculator.updateDisplay();
-     } else if (event.keyCode == 99 || event.keyCode == 51) {
+    } else if (event.keyCode == 99 || event.keyCode == 51) {
+        myCalculator.toggleKeyColor("three-button");
         myCalculator.appendElement(3);
         myCalculator.updateDisplay();
-     } else if (event.keyCode == 100 || event.keyCode == 52) {
+    } else if (event.keyCode == 100 || event.keyCode == 52) {
+        myCalculator.toggleKeyColor("four-button");
         myCalculator.appendElement(4);
         myCalculator.updateDisplay();
-     } else if (event.keyCode == 101 || event.keyCode == 53) {
+    } else if (event.keyCode == 101 || event.keyCode == 53) {
+        myCalculator.toggleKeyColor("five-button");
         myCalculator.appendElement(5);
         myCalculator.updateDisplay();
-     } else if (event.keyCode == 102 || event.keyCode == 54) {
+    } else if (event.keyCode == 102 || event.keyCode == 54) {
+        myCalculator.toggleKeyColor("six-button");
         myCalculator.appendElement(6);
         myCalculator.updateDisplay();
-     } else if (event.keyCode == 103 || event.keyCode == 55) {
+    } else if (event.keyCode == 103 || event.keyCode == 55) {
+        myCalculator.toggleKeyColor("seven-button");
         myCalculator.appendElement(7);
         myCalculator.updateDisplay();
-     } else if (event.keyCode == 104 || event.keyCode == 56) {
+    } else if (event.keyCode == 104 || event.keyCode == 56) {
+        myCalculator.toggleKeyColor("eight-button");
         myCalculator.appendElement(8);
         myCalculator.updateDisplay();
-     } else if (event.keyCode == 105 || event.keyCode == 57) {
+    } else if (event.keyCode == 105 || event.keyCode == 57) {
+        myCalculator.toggleKeyColor("nine-button");
         myCalculator.appendElement(9);
         myCalculator.updateDisplay();
-     } else if (event.keyCode == 107) {
+    } else if (event.keyCode == 107) {
+        myCalculator.toggleKeyColor("plus-button");
         myCalculator.chooseOperation("+");
         myCalculator.updateDisplay();
-     } else if (event.keyCode == 109) {
+    } else if (event.keyCode == 109) {
+        myCalculator.toggleKeyColor("minus-button");
         myCalculator.chooseOperation("-");
         myCalculator.updateDisplay();
-     } else if (event.keyCode == 106) {
+    } else if (event.keyCode == 106) {
+        myCalculator.toggleKeyColor("multiply-button");
         myCalculator.chooseOperation("x");
         myCalculator.updateDisplay();
-     } else if (event.keyCode == 111) {
+    } else if (event.keyCode == 111) {
+        myCalculator.toggleKeyColor("divide-button");
         myCalculator.chooseOperation("/");
         myCalculator.updateDisplay();
-     } else if (event.keyCode == 108 || event.keyCode == 188) {
+    } else if (event.keyCode == 108 || event.keyCode == 188) {
+        myCalculator.toggleKeyColor("decimal-button");
         myCalculator.appendElement(".");
         myCalculator.updateDisplay();
-     } else if (event.keyCode == 13) {
+    } else if (event.keyCode == 13) {
+        myCalculator.toggleKeyColor("equal-button");
         myCalculator.operate();
         myCalculator.updateDisplay();
-     } else if (event.keyCode == 8) {
+    } else if (event.keyCode == 8) {
+        myCalculator.toggleKeyColor("delete-button");
         myCalculator.delete();
-        myCalculator.updateDisplay();   
-     } else if (event.keyCode == 67) {
+        myCalculator.updateDisplay();
+    } else if (event.keyCode == 67) {
+        myCalculator.toggleKeyColor("clear-button");
         myCalculator.clear();
         myCalculator.updateDisplay();
-     } else if (event.keyCode == 173) {
+    } else if (event.keyCode == 173) {
+        myCalculator.toggleKeyColor("negative-button");
         myCalculator.makeNegative();
         myCalculator.updateDisplay();
-     }
+    }
 }
 
+//releases the key highlight toggles
+window.onkeyup = function (event) {
+    if (event.keyCode == 96 || event.keyCode == 48) {
+        myCalculator.revertKeyColor("zero-button");
+        myCalculator.updateDisplay();
+    } else if (event.keyCode == 97 || event.keyCode == 49) {
+        myCalculator.revertKeyColor("one-button");
+        myCalculator.updateDisplay();
+    } else if (event.keyCode == 98 || event.keyCode == 50) {
+        myCalculator.revertKeyColor("two-button");
+        myCalculator.updateDisplay();
+    } else if (event.keyCode == 99 || event.keyCode == 51) {
+        myCalculator.revertKeyColor("three-button");
+        myCalculator.updateDisplay();
+    } else if (event.keyCode == 100 || event.keyCode == 52) {
+        myCalculator.revertKeyColor("four-button");
+        myCalculator.updateDisplay();
+    } else if (event.keyCode == 101 || event.keyCode == 53) {
+        myCalculator.revertKeyColor("five-button");
+        myCalculator.updateDisplay();
+    } else if (event.keyCode == 102 || event.keyCode == 54) {
+        myCalculator.revertKeyColor("six-button");
+        myCalculator.updateDisplay();
+    } else if (event.keyCode == 103 || event.keyCode == 55) {
+        myCalculator.revertKeyColor("seven-button");
+        myCalculator.updateDisplay();
+    } else if (event.keyCode == 104 || event.keyCode == 56) {
+        myCalculator.revertKeyColor("eight-button");
+        myCalculator.updateDisplay();
+    } else if (event.keyCode == 105 || event.keyCode == 57) {
+        myCalculator.revertKeyColor("nine-button");
+        myCalculator.updateDisplay();
+    } else if (event.keyCode == 107) {
+        myCalculator.revertKeyColor("plus-button");
+        myCalculator.updateDisplay();
+    } else if (event.keyCode == 109) {
+        myCalculator.revertKeyColor("minus-button");
+        myCalculator.updateDisplay();
+    } else if (event.keyCode == 106) {
+        myCalculator.revertKeyColor("multiply-button");
+        myCalculator.updateDisplay();
+    } else if (event.keyCode == 111) {
+        myCalculator.revertKeyColor("divide-button");
+        myCalculator.updateDisplay();
+    } else if (event.keyCode == 108 || event.keyCode == 188) {
+        myCalculator.revertKeyColor("decimal-button");
+        myCalculator.updateDisplay();
+    } else if (event.keyCode == 13) {
+        myCalculator.revertKeyColor("equal-button");
+        myCalculator.updateDisplay();
+    } else if (event.keyCode == 8) {
+        myCalculator.revertKeyColor("delete-button");
+        myCalculator.updateDisplay();
+    } else if (event.keyCode == 67) {
+        myCalculator.revertKeyColor("clear-button");
+        myCalculator.updateDisplay();
+    } else if (event.keyCode == 173) {
+        myCalculator.revertKeyColor("negative-button");
+        myCalculator.updateDisplay();
+    }
+}

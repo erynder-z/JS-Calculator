@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,13 +9,14 @@
     <link href="style.css" rel="stylesheet">
     <script src="script.js" defer></script>
 </head>
+
 <body>
     <div class="calculator-grid">
         <div class="output">
             <div data-previous-operand class="previous-operand"></div>
             <div data-current-operand class="current-operand"></div>
         </div>
-        <button data-a>A</button>
+        <button data-negative id="negative">+/-</button>
         <button data-b>B</button>
         <button data-clear id="clear">CLR</button>
         <button data-delete id="delete">DEL</button>
@@ -36,4 +38,5 @@
         <button data-operation id="plusbtn">+</button>
     </div>
 </body>
+
 </html>

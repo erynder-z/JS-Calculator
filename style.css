@@ -1,7 +1,8 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     font-family: 'Rubik', sans-serif;
 }
@@ -9,7 +10,8 @@
 body {
     padding: 0;
     margin: 0;
-    background: rgb(48, 46, 65);;
+    background: rgb(48, 46, 65);
+    ;
 }
 
 .calculator-grid {
@@ -21,7 +23,7 @@ body {
     grid-template-rows: minmax(120px, auto) repeat(5, 100px);
 }
 
-.calculator-grid > button {
+.calculator-grid>button {
     cursor: pointer;
     font-size: 1rem;
     border: 1px solid #2a3761;
@@ -30,7 +32,7 @@ body {
     color: rgb(235, 235, 235);
 }
 
-.calculator-grid > button:hover {
+.calculator-grid>button:hover {
     background-color: #9163cc;
 }
 
@@ -80,10 +82,16 @@ body {
     background-color: rgb(255, 0, 0);
 }
 
-#plusbtn, #minusbtn, #multiplybtn, #dividebtn {
+#plusbtn,
+#minusbtn,
+#multiplybtn,
+#dividebtn {
     background-color: #35457a;
 }
 
-#plusbtn:hover, #minusbtn:hover, #multiplybtn:hover, #dividebtn:hover {
+#plusbtn:hover,
+#minusbtn:hover,
+#multiplybtn:hover,
+#dividebtn:hover {
     background-color: #9163cc;
 }

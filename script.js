@@ -79,7 +79,7 @@ class Calculator {
     }
 
     //sets the entered operation in order to perform the correct calculation afterwards.
-    chooseOperantion(operation) {
+    chooseOperation(operation) {
         if (this.currentOperand === "") return;
         if (this.currentOperand !== "") {
             this.operate();
@@ -141,7 +141,7 @@ numberButtons.forEach(button => {
 
 operationButtons.forEach(button => {
     button.addEventListener("click", () => {
-        myCalculator.chooseOperantion(button.innerText);
+        myCalculator.chooseOperation(button.innerText);
         myCalculator.updateDisplay();
     });
 });
@@ -170,3 +170,66 @@ deleteButton.addEventListener("click", () => {
     myCalculator.delete();
     myCalculator.updateDisplay();
 });
+
+//keyboard input functionality
+window.onkeydown = function(event) {
+    if (event.keyCode == 96 || event.keyCode == 48) {
+        myCalculator.appendElement(0);
+        myCalculator.updateDisplay();
+     } else if (event.keyCode == 97 || event.keyCode == 49) {
+        myCalculator.appendElement(1);
+        myCalculator.updateDisplay();
+     } else if (event.keyCode == 98 || event.keyCode == 50) {
+        myCalculator.appendElement(2);
+        myCalculator.updateDisplay();
+     } else if (event.keyCode == 99 || event.keyCode == 51) {
+        myCalculator.appendElement(3);
+        myCalculator.updateDisplay();
+     } else if (event.keyCode == 100 || event.keyCode == 52) {
+        myCalculator.appendElement(4);
+        myCalculator.updateDisplay();
+     } else if (event.keyCode == 101 || event.keyCode == 53) {
+        myCalculator.appendElement(5);
+        myCalculator.updateDisplay();
+     } else if (event.keyCode == 102 || event.keyCode == 54) {
+        myCalculator.appendElement(6);
+        myCalculator.updateDisplay();
+     } else if (event.keyCode == 103 || event.keyCode == 55) {
+        myCalculator.appendElement(7);
+        myCalculator.updateDisplay();
+     } else if (event.keyCode == 104 || event.keyCode == 56) {
+        myCalculator.appendElement(8);
+        myCalculator.updateDisplay();
+     } else if (event.keyCode == 105 || event.keyCode == 57) {
+        myCalculator.appendElement(9);
+        myCalculator.updateDisplay();
+     } else if (event.keyCode == 107) {
+        myCalculator.chooseOperation("+");
+        myCalculator.updateDisplay();
+     } else if (event.keyCode == 109) {
+        myCalculator.chooseOperation("-");
+        myCalculator.updateDisplay();
+     } else if (event.keyCode == 106) {
+        myCalculator.chooseOperation("x");
+        myCalculator.updateDisplay();
+     } else if (event.keyCode == 111) {
+        myCalculator.chooseOperation("/");
+        myCalculator.updateDisplay();
+     } else if (event.keyCode == 108 || event.keyCode == 188) {
+        myCalculator.appendElement(".");
+        myCalculator.updateDisplay();
+     } else if (event.keyCode == 13) {
+        myCalculator.operate();
+        myCalculator.updateDisplay();
+     } else if (event.keyCode == 8) {
+        myCalculator.delete();
+        myCalculator.updateDisplay();   
+     } else if (event.keyCode == 67) {
+        myCalculator.clear();
+        myCalculator.updateDisplay();
+     } else if (event.keyCode == 173) {
+        myCalculator.makeNegative();
+        myCalculator.updateDisplay();
+     }
+}
+

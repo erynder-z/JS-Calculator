@@ -8,6 +8,7 @@ const percentageButton = document.querySelector("[data-percent]");
 const previousOperandTextElement = document.querySelector("[data-previous-operand]");
 const currentOperandTextElement = document.querySelector("[data-current-operand]");
 
+//constructs a calculator class with the needed variables and functions.
 class Calculator {
     constructor(previousOperandTextElement, currentOperandTextElement) {
         this.previousOperandTextElement = previousOperandTextElement;
@@ -15,16 +16,19 @@ class Calculator {
         this.clear();
     }
 
+    //clears all variables used in calculation.
     clear() {
         this.currentOperand = "";
         this.previousOperand = "";
         this.operation = "";
     }
 
+    //deletes the last entered element by converting it to a string and slicing the last element.
     delete() {
         this.currentOperand = this.currentOperand.toString().slice(0, -1);
     }
 
+    //appends entered element to the currentOperand textfield & prevents entering multiple "." or "%".
     appendElement(number) {
         if (number === "." && this.currentOperand.includes(".")) {
             return;
@@ -36,8 +40,8 @@ class Calculator {
         this.currentOperand = this.currentOperand.toString() + number.toString();
     }
 
+    //makes the currentOperand negative by converting it to a string and prepending a "-".
     makeNegative() {
-
         if (this.currentOperand.toString().startsWith("-")) {
             this.currentOperand = this.currentOperand.toString().slice(1);
         } else {
@@ -45,6 +49,7 @@ class Calculator {
         }
     }
 
+    //treats the currentOperand as a percentage and performs a calculation with previous entered operation.
     makePercent() {
         let result;
         const num1 = parseFloat(this.previousOperand);
@@ -73,6 +78,7 @@ class Calculator {
         this.previousOperand = "";
     }
 
+    //sets the entered operation in order to perform the correct calculation afterwards.
     chooseOperantion(operation) {
         if (this.currentOperand === "") return;
         if (this.currentOperand !== "") {
@@ -83,6 +89,7 @@ class Calculator {
         this.currentOperand = "";
     }
 
+    // performs calculations based on entered operands and chosen operation.    
     operate() {
         let result;
         const num1 = parseFloat(this.previousOperand);
@@ -110,6 +117,7 @@ class Calculator {
         this.previousOperand = "";
     }
 
+    //updates the display to show updated values after variables have changed.
     updateDisplay() {
         this.currentOperandTextElement.innerText = this.currentOperand;
         if (this.operation != "") {
@@ -120,8 +128,10 @@ class Calculator {
     }
 }
 
+//the calculator object we use to call the functions on
 const myCalculator = new Calculator(previousOperandTextElement, currentOperandTextElement)
 
+//add EventListeners to the buttons and call the corresponding functions
 numberButtons.forEach(button => {
     button.addEventListener("click", () => {
         myCalculator.appendElement(button.innerText);

@@ -4,7 +4,7 @@ const equalButton = document.querySelector("[data-equal]");
 const clearButton = document.querySelector("[data-clear]");
 const deleteButton = document.querySelector("[data-delete]");
 const negativeButton = document.querySelector("[data-negative]");
-const bButton = document.querySelector("[data-b]");
+const percentageButton = document.querySelector("[data-percent]");
 const previousOperandTextElement = document.querySelector("[data-previous-operand]");
 const currentOperandTextElement = document.querySelector("[data-current-operand]");
 
@@ -28,11 +28,16 @@ class Calculator {
     appendElement(number) {
         if (number === "." && this.currentOperand.includes(".")) {
             return;
+        } else if (number === "%" && this.currentOperand.includes("%")) {
+            return;
+        } else if (number === "%" && this.previousOperand == "") {
+            return;
         }
         this.currentOperand = this.currentOperand.toString() + number.toString();
     }
 
     makeNegative() {
+
         if (this.currentOperand.toString().startsWith("-")) {
             this.currentOperand = this.currentOperand.toString().slice(1);
         } else {
@@ -40,6 +45,33 @@ class Calculator {
         }
     }
 
+    makePercent() {
+        let result;
+        const num1 = parseFloat(this.previousOperand);
+        const num2 = parseFloat(this.currentOperand);
+        if (isNaN(num1) || isNaN(num2)) return;
+
+        if (this.operation == "+") {
+            result = ((num1 / 100) * num2) + num1;
+        } else if (this.operation == "-") {
+            result = num1 - ((num1 / 100) * num2);
+        } else if (this.operation == "x") {
+            result = (num1 / 100) * num2;
+        } else if (this.operation == "÷") {
+            if (num2 == 0) {
+                alert("divide by zero?");
+                myCalculator.clear();
+                return;
+            } else {
+                result = (num1 * 100) / num2;
+            }
+        } else {
+            return;
+        }
+        this.currentOperand = result;
+        this.operation = "";
+        this.previousOperand = "";
+    }
 
     chooseOperantion(operation) {
         if (this.currentOperand === "") return;
@@ -106,6 +138,11 @@ operationButtons.forEach(button => {
 
 negativeButton.addEventListener("click", () => {
     myCalculator.makeNegative();
+    myCalculator.updateDisplay();
+});
+
+percentageButton.addEventListener("click", () => {
+    myCalculator.makePercent();
     myCalculator.updateDisplay();
 });
 

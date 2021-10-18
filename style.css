@@ -22,6 +22,7 @@ body {
     grid-template-rows: minmax(150px, auto) repeat(5, 100px);
 }
 
+
 .calculator-grid>button {
     cursor: pointer;
     font-size: 1rem;
@@ -31,8 +32,10 @@ body {
     color: rgb(235, 235, 235);
 }
 
+@media (hover: hover) {
 .calculator-grid>button:hover {
     background-color: #9163cc;
+}
 }
 
 .output {
@@ -61,24 +64,30 @@ body {
     background-color: rgb(43, 37, 94);
 }
 
+@media (hover: hover) {
 #equal-button:hover {
     background-color: rgb(153, 44, 153);
+}
 }
 
 #delete-button {
     background-color: rgb(196, 69, 69);
 }
 
+@media (hover: hover) {
 #delete-button:hover {
     background-color: rgb(238, 26, 26);
+}
 }
 
 #clear-button {
     background-color: rgb(194, 27, 27);
 }
 
+@media (hover: hover) {
 #clear-button:hover {
     background-color: rgb(255, 0, 0);
+}
 }
 
 #negative-button {
@@ -96,6 +105,7 @@ body {
     background-color: #35457a;
 }
 
+@media (hover: hover) {
 #plus-button:hover,
 #minus-button:hover,
 #multiply-button:hover,
@@ -103,6 +113,7 @@ body {
 #negative-button:hover,
 #percent-button:hover {
     background-color: #9163cc;
+}
 }
 
 .calculator-grid>button.pressed,
@@ -122,32 +133,5 @@ body {
     .calculator-grid {
         grid-template-columns: repeat(4, 90px);
         grid-template-rows: minmax(140px, auto) repeat(5, 90px);
-    }
-}
-
-@media (hover: hover) {
-    .calculator-grid>button:hover {
-        background-color: #9163cc;
-    }
-
-    #equal-button:hover {
-        background-color: rgb(153, 44, 153);
-    }
-
-    #delete-button:hover {
-        background-color: rgb(238, 26, 26);
-    }
-
-    #clear-button:hover {
-        background-color: rgb(255, 0, 0);
-    }
-
-    #plus-button:hover,
-    #minus-button:hover,
-    #multiply-button:hover,
-    #divide-button:hover,
-    #negative-button:hover,
-    #percent-button:hover {
-        background-color: #9163cc;
     }
 }

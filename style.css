@@ -20,7 +20,7 @@ body {
     align-content: center;
     min-height: 100vh;
     grid-template-columns: repeat(4, 100px);
-    grid-template-rows: minmax(120px, auto) repeat(5, 100px);
+    grid-template-rows: minmax(150px, auto) repeat(5, 100px);
 }
 
 .calculator-grid>button {
@@ -42,7 +42,7 @@ body {
     display: flex;
     align-items: flex-end;
     justify-content: space-around;
-    flex-direction: column;
+    flex-direction:column;
     padding: 10px;
     word-wrap: break-word;
     word-break: break-all;
@@ -96,6 +96,13 @@ body {
     background-color: #9163cc;
 }
 
-.pressed {
-    background-color: rgb(192, 24, 192)!important;
+.calculator-grid>button.pressed,
+#equal-button.pressed,
+#delete-button.pressed,
+#clear-button.pressed,
+#plus-button.pressed,
+#minus-button.pressed,
+#multiply-button.pressed,
+#divide-button.pressed {
+    background-color: rgb(192, 24, 192);
 }

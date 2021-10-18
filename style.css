@@ -33,9 +33,9 @@ body {
 }
 
 @media (hover: hover) {
-.calculator-grid>button:hover {
-    background-color: #9163cc;
-}
+    .calculator-grid>button:hover {
+        background-color: #9163cc;
+    }
 }
 
 .output {
@@ -65,9 +65,9 @@ body {
 }
 
 @media (hover: hover) {
-#equal-button:hover {
-    background-color: rgb(153, 44, 153);
-}
+    #equal-button:hover {
+        background-color: rgb(153, 44, 153);
+    }
 }
 
 #delete-button {
@@ -75,9 +75,9 @@ body {
 }
 
 @media (hover: hover) {
-#delete-button:hover {
-    background-color: rgb(238, 26, 26);
-}
+    #delete-button:hover {
+        background-color: rgb(238, 26, 26);
+    }
 }
 
 #clear-button {
@@ -85,9 +85,9 @@ body {
 }
 
 @media (hover: hover) {
-#clear-button:hover {
-    background-color: rgb(255, 0, 0);
-}
+    #clear-button:hover {
+        background-color: rgb(255, 0, 0);
+    }
 }
 
 #negative-button {
@@ -106,14 +106,15 @@ body {
 }
 
 @media (hover: hover) {
-#plus-button:hover,
-#minus-button:hover,
-#multiply-button:hover,
-#divide-button:hover,
-#negative-button:hover,
-#percent-button:hover {
-    background-color: #9163cc;
-}
+
+    #plus-button:hover,
+    #minus-button:hover,
+    #multiply-button:hover,
+    #divide-button:hover,
+    #negative-button:hover,
+    #percent-button:hover {
+        background-color: #9163cc;
+    }
 }
 
 .calculator-grid>button.pressed,
@@ -125,7 +126,17 @@ body {
 #multiply-button.pressed,
 #divide-button.pressed,
 #negative-button.pressed,
-#percent-button.pressed {
+#percent-button.pressed,
+.calculator-grid>button:active,
+#equal-button:active,
+#delete-button:active,
+#clear-button:active,
+#plus-button:active,
+#minus-button:active,
+#multiply-button:active,
+#divide-button:active,
+#negative-button:active,
+#percent-button:active {
     background-color: rgb(192, 24, 192);
 }
 

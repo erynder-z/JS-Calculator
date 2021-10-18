@@ -7,6 +7,7 @@ const negativeButton = document.querySelector("[data-negative]");
 const percentageButton = document.querySelector("[data-percent]");
 const previousOperandTextElement = document.querySelector("[data-previous-operand]");
 const currentOperandTextElement = document.querySelector("[data-current-operand]");
+let shiftModifier = false; //is modified when the shift key is pressed. Needed to get visual feedback upon keyboard-% input.
 
 //constructs a calculator class with the needed variables and functions.
 class Calculator {
@@ -206,9 +207,15 @@ window.onkeydown = function (event) {
         myCalculator.appendElement(4);
         myCalculator.updateDisplay();
     } else if (event.keyCode == 101 || event.keyCode == 53) {
-        myCalculator.toggleKeyColor("five-button");
-        myCalculator.appendElement(5);
-        myCalculator.updateDisplay();
+        if (shiftModifier == true) {
+            myCalculator.toggleKeyColor("percent-button");
+            myCalculator.makePercent();
+            myCalculator.updateDisplay();
+        } else {
+            myCalculator.toggleKeyColor("five-button");
+            myCalculator.appendElement(5);
+            myCalculator.updateDisplay();
+        }
     } else if (event.keyCode == 102 || event.keyCode == 54) {
         myCalculator.toggleKeyColor("six-button");
         myCalculator.appendElement(6);
@@ -248,7 +255,6 @@ window.onkeydown = function (event) {
     } else if (event.keyCode == 13) {
         myCalculator.toggleKeyColor("equal-button");
         myCalculator.operate();
-        myCalculator.updateDisplay();
     } else if (event.keyCode == 8) {
         myCalculator.toggleKeyColor("delete-button");
         myCalculator.delete();
@@ -261,67 +267,76 @@ window.onkeydown = function (event) {
         myCalculator.toggleKeyColor("negative-button");
         myCalculator.makeNegative();
         myCalculator.updateDisplay();
+    } else if (event.keyCode == 16) {
+        shiftModifier = true;
     }
-}
 
-//releases the key highlight toggles
-window.onkeyup = function (event) {
-    if (event.keyCode == 96 || event.keyCode == 48) {
-        myCalculator.revertKeyColor("zero-button");
-        myCalculator.updateDisplay();
-    } else if (event.keyCode == 97 || event.keyCode == 49) {
-        myCalculator.revertKeyColor("one-button");
-        myCalculator.updateDisplay();
-    } else if (event.keyCode == 98 || event.keyCode == 50) {
-        myCalculator.revertKeyColor("two-button");
-        myCalculator.updateDisplay();
-    } else if (event.keyCode == 99 || event.keyCode == 51) {
-        myCalculator.revertKeyColor("three-button");
-        myCalculator.updateDisplay();
-    } else if (event.keyCode == 100 || event.keyCode == 52) {
-        myCalculator.revertKeyColor("four-button");
-        myCalculator.updateDisplay();
-    } else if (event.keyCode == 101 || event.keyCode == 53) {
-        myCalculator.revertKeyColor("five-button");
-        myCalculator.updateDisplay();
-    } else if (event.keyCode == 102 || event.keyCode == 54) {
-        myCalculator.revertKeyColor("six-button");
-        myCalculator.updateDisplay();
-    } else if (event.keyCode == 103 || event.keyCode == 55) {
-        myCalculator.revertKeyColor("seven-button");
-        myCalculator.updateDisplay();
-    } else if (event.keyCode == 104 || event.keyCode == 56) {
-        myCalculator.revertKeyColor("eight-button");
-        myCalculator.updateDisplay();
-    } else if (event.keyCode == 105 || event.keyCode == 57) {
-        myCalculator.revertKeyColor("nine-button");
-        myCalculator.updateDisplay();
-    } else if (event.keyCode == 107) {
-        myCalculator.revertKeyColor("plus-button");
-        myCalculator.updateDisplay();
-    } else if (event.keyCode == 109) {
-        myCalculator.revertKeyColor("minus-button");
-        myCalculator.updateDisplay();
-    } else if (event.keyCode == 106) {
-        myCalculator.revertKeyColor("multiply-button");
-        myCalculator.updateDisplay();
-    } else if (event.keyCode == 111) {
-        myCalculator.revertKeyColor("divide-button");
-        myCalculator.updateDisplay();
-    } else if (event.keyCode == 108 || event.keyCode == 188) {
-        myCalculator.revertKeyColor("decimal-button");
-        myCalculator.updateDisplay();
-    } else if (event.keyCode == 13) {
-        myCalculator.revertKeyColor("equal-button");
-        myCalculator.updateDisplay();
-    } else if (event.keyCode == 8) {
-        myCalculator.revertKeyColor("delete-button");
-        myCalculator.updateDisplay();
-    } else if (event.keyCode == 67) {
-        myCalculator.revertKeyColor("clear-button");
-        myCalculator.updateDisplay();
-    } else if (event.keyCode == 173) {
-        myCalculator.revertKeyColor("negative-button");
-        myCalculator.updateDisplay();
+    //releases the key highlight toggles
+    window.onkeyup = function (event) {
+        if (event.keyCode == 96 || event.keyCode == 48) {
+            myCalculator.revertKeyColor("zero-button");
+            myCalculator.updateDisplay();
+        } else if (event.keyCode == 97 || event.keyCode == 49) {
+            myCalculator.revertKeyColor("one-button");
+            myCalculator.updateDisplay();
+        } else if (event.keyCode == 98 || event.keyCode == 50) {
+            myCalculator.revertKeyColor("two-button");
+            myCalculator.updateDisplay();
+        } else if (event.keyCode == 99 || event.keyCode == 51) {
+            myCalculator.revertKeyColor("three-button");
+            myCalculator.updateDisplay();
+        } else if (event.keyCode == 100 || event.keyCode == 52) {
+            myCalculator.revertKeyColor("four-button");
+            myCalculator.updateDisplay();
+        } else if (event.keyCode == 101 || event.keyCode == 53) {
+            if (shiftModifier == true) {
+                myCalculator.revertKeyColor("percent-button");
+                myCalculator.updateDisplay();
+            } else {
+                myCalculator.revertKeyColor("five-button");
+                myCalculator.updateDisplay();
+            }
+        } else if (event.keyCode == 102 || event.keyCode == 54) {
+            myCalculator.revertKeyColor("six-button");
+            myCalculator.updateDisplay();
+        } else if (event.keyCode == 103 || event.keyCode == 55) {
+            myCalculator.revertKeyColor("seven-button");
+            myCalculator.updateDisplay();
+        } else if (event.keyCode == 104 || event.keyCode == 56) {
+            myCalculator.revertKeyColor("eight-button");
+            myCalculator.updateDisplay();
+        } else if (event.keyCode == 105 || event.keyCode == 57) {
+            myCalculator.revertKeyColor("nine-button");
+            myCalculator.updateDisplay();
+        } else if (event.keyCode == 107) {
+            myCalculator.revertKeyColor("plus-button");
+            myCalculator.updateDisplay();
+        } else if (event.keyCode == 109) {
+            myCalculator.revertKeyColor("minus-button");
+            myCalculator.updateDisplay();
+        } else if (event.keyCode == 106) {
+            myCalculator.revertKeyColor("multiply-button");
+            myCalculator.updateDisplay();
+        } else if (event.keyCode == 111) {
+            myCalculator.revertKeyColor("divide-button");
+            myCalculator.updateDisplay();
+        } else if (event.keyCode == 108 || event.keyCode == 188) {
+            myCalculator.revertKeyColor("decimal-button");
+            myCalculator.updateDisplay();
+        } else if (event.keyCode == 13) {
+            myCalculator.revertKeyColor("equal-button");
+            myCalculator.updateDisplay();
+        } else if (event.keyCode == 8) {
+            myCalculator.revertKeyColor("delete-button");
+            myCalculator.updateDisplay();
+        } else if (event.keyCode == 67) {
+            myCalculator.revertKeyColor("clear-button");
+            myCalculator.updateDisplay();
+        } else if (event.keyCode == 173) {
+            myCalculator.revertKeyColor("negative-button");
+            myCalculator.updateDisplay();
+        } else if (event.keyCode == 16) {
+            shiftModifier = false;
+        }
     }
 }

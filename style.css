@@ -117,3 +117,10 @@ body {
 #percent-button.pressed {
     background-color: rgb(192, 24, 192);
 }
+
+@media (max-width: 50em) {
+    .calculator-grid {
+        grid-template-columns: repeat(4, 90px);
+        grid-template-rows: minmax(140px, auto) repeat(5, 90px);
+    }
+}

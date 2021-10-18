@@ -1,3 +1,4 @@
-A simple Javascript calculator.
+A simple calculator made with Javascript.
+There are may like it, but that's the one I made. =)
 
-WIP
+https://erynder-z.github.io/JS-Calculator/

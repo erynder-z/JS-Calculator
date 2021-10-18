@@ -248,7 +248,7 @@ window.onkeydown = function (event) {
         myCalculator.toggleKeyColor("divide-button");
         myCalculator.chooseOperation("/");
         myCalculator.updateDisplay();
-    } else if (event.keyCode == 108 || event.keyCode == 188) {
+    } else if (event.keyCode == 108 || event.keyCode == 188 || event.keyCode == 190) {
         myCalculator.toggleKeyColor("decimal-button");
         myCalculator.appendElement(".");
         myCalculator.updateDisplay();
@@ -320,7 +320,7 @@ window.onkeydown = function (event) {
         } else if (event.keyCode == 111) {
             myCalculator.revertKeyColor("divide-button");
             myCalculator.updateDisplay();
-        } else if (event.keyCode == 108 || event.keyCode == 188) {
+        } else if (event.keyCode == 108 || event.keyCode == 188 || event.keyCode == 190) {
             myCalculator.revertKeyColor("decimal-button");
             myCalculator.updateDisplay();
         } else if (event.keyCode == 13) {

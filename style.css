@@ -81,6 +81,14 @@ body {
     background-color: rgb(255, 0, 0);
 }
 
+#negative-button {
+    background-color: #27335a;
+}
+
+#percent-button {
+    background-color: #27335a;
+}
+
 #plus-button,
 #minus-button,
 #multiply-button,
@@ -91,7 +99,9 @@ body {
 #plus-button:hover,
 #minus-button:hover,
 #multiply-button:hover,
-#divide-button:hover {
+#divide-button:hover,
+#negative-button:hover,
+#percent-button:hover {
     background-color: #9163cc;
 }
 

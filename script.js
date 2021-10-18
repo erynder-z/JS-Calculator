@@ -7,7 +7,7 @@ const negativeButton = document.querySelector("[data-negative]");
 const percentageButton = document.querySelector("[data-percent]");
 const previousOperandTextElement = document.querySelector("[data-previous-operand]");
 const currentOperandTextElement = document.querySelector("[data-current-operand]");
-let shiftModifier = false; //is modified when the shift key is pressed. Needed to get visual feedback upon keyboard-% input.
+let shiftModifier = false; //is modified when the shift key is pressed. Needed to get visual feedback upon keyboard "%" input.
 
 //constructs a calculator class with the needed variables and functions.
 class Calculator {
@@ -184,7 +184,7 @@ deleteButton.addEventListener("click", () => {
     myCalculator.updateDisplay();
 });
 
-//keyboard input functionality
+//keyboard input functionality and visual feedback
 window.onkeydown = function (event) {
     if (event.keyCode == 96 || event.keyCode == 48) {
         myCalculator.toggleKeyColor("zero-button");

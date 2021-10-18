@@ -31,7 +31,7 @@ body {
     color: rgb(235, 235, 235);
 }
 
-.calculator-grid>button:hover, .calculator-grid>button:active {
+.calculator-grid>button:hover {
     background-color: #9163cc;
 }
 
@@ -61,7 +61,7 @@ body {
     background-color: rgb(43, 37, 94);
 }
 
-#equal-button:hover, #equal-button:active {
+#equal-button:hover {
     background-color: rgb(153, 44, 153);
 }
 
@@ -69,7 +69,7 @@ body {
     background-color: rgb(196, 69, 69);
 }
 
-#delete-button:hover, #delete-button:active {
+#delete-button:hover {
     background-color: rgb(238, 26, 26);
 }
 
@@ -77,7 +77,7 @@ body {
     background-color: rgb(194, 27, 27);
 }
 
-#clear-button:hover, #clear-button:active {
+#clear-button:hover {
     background-color: rgb(255, 0, 0);
 }
 
@@ -101,13 +101,7 @@ body {
 #multiply-button:hover,
 #divide-button:hover,
 #negative-button:hover,
-#percent-button:hover,
-#plus-button:active,
-#minus-button:active,
-#multiply-button:active,
-#divide-button:active,
-#negative-button:active,
-#percent-button:active {
+#percent-button:hover {
     background-color: #9163cc;
 }
 
@@ -128,5 +122,32 @@ body {
     .calculator-grid {
         grid-template-columns: repeat(4, 90px);
         grid-template-rows: minmax(140px, auto) repeat(5, 90px);
+    }
+}
+
+@media (hover: hover) {
+    .calculator-grid>button:hover {
+        background-color: #9163cc;
+    }
+
+    #equal-button:hover {
+        background-color: rgb(153, 44, 153);
+    }
+
+    #delete-button:hover {
+        background-color: rgb(238, 26, 26);
+    }
+
+    #clear-button:hover {
+        background-color: rgb(255, 0, 0);
+    }
+
+    #plus-button:hover,
+    #minus-button:hover,
+    #multiply-button:hover,
+    #divide-button:hover,
+    #negative-button:hover,
+    #percent-button:hover {
+        background-color: #9163cc;
     }
 }

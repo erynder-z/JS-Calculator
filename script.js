@@ -59,10 +59,13 @@ class Calculator {
 
         if (this.operation == "+") {
             result = ((num1 / 100) * num2) + num1;
+            result = Math.round(result*100000) / 100000;
         } else if (this.operation == "-") {
             result = num1 - ((num1 / 100) * num2);
+            result = Math.round(result*100000) / 100000;
         } else if (this.operation == "x") {
             result = (num1 / 100) * num2;
+            result = Math.round(result*100000) / 100000;
         } else if (this.operation == "÷") {
             if (num2 == 0) {
                 alert("divide by zero?");
@@ -70,6 +73,7 @@ class Calculator {
                 return;
             } else {
                 result = (num1 * 100) / num2;
+                result = Math.round(result*100000) / 100000;
             }
         } else {
             return;
@@ -98,10 +102,13 @@ class Calculator {
         if (isNaN(num1) || isNaN(num2)) return;
         if (this.operation == "+") {
             result = num1 + num2;
+            result = Math.round(result*100000) / 100000;
         } else if (this.operation == "-") {
             result = num1 - num2;
+            result = Math.round(result*100000) / 100000;
         } else if (this.operation == "x") {
             result = num1 * num2;
+            result = Math.round(result*100000) / 100000;
         } else if (this.operation == "÷") {
             if (num2 == 0) {
                 alert("divide by zero?");
@@ -109,6 +116,7 @@ class Calculator {
                 return;
             } else {
                 result = num1 / num2;
+                result = Math.round(result*100000) / 100000;
             }
         } else {
             return;

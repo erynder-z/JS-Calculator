@@ -4,9 +4,11 @@
 *::before,
 *::after {
     box-sizing: border-box;
-    font-family: 'Rubik', sans-serif;
 }
 
+html {
+    font-family: 'Rubik', sans-serif;
+}
 body {
     padding: 0;
     margin: 0;
@@ -17,7 +19,7 @@ body {
     display: grid;
     justify-content: center;
     align-content: center;
-    min-height: 100vh;
+    min-height: 90vh;
     grid-template-columns: repeat(4, 100px);
     grid-template-rows: minmax(150px, auto) repeat(5, 100px);
 }
@@ -61,7 +63,7 @@ body {
 }
 
 #equal-button {
-    background-color: rgb(43, 37, 94);
+    background-color: rgb(38, 29, 88);
 }
 
 @media (hover: hover) {
@@ -146,3 +148,24 @@ body {
         grid-template-rows: minmax(140px, auto) repeat(5, 90px);
     }
 }
+
+#footer {
+    color: #5b6585;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-size: 20px;
+}
+
+.contact-details {
+    font-size: 2.4rem;
+    text-shadow: 2px 2px 1px #1f1f1f;
+    transition: transform 0.3s ease-out;
+    padding: 1rem;
+  }
+  
+  .contact-details:hover {
+    transform: translateY(10px);
+  }
